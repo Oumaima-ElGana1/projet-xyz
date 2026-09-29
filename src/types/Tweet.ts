@@ -5,6 +5,7 @@ export type Tweet ={
     content : string //le contenu du tweet
     image?: TweetImage
     createdAt : string //la date doit être au format ISO 8601
+    parentId? : string
 }
 export type TweetImage={
     url : string

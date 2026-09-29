@@ -69,5 +69,21 @@ export const tweets : Tweet[] = [
     authorHand: "alex_product",
     content: "<<je dois réviser je peux grv pas sortir>>...Je viens de passer 5h à faire une sieste je reconnais meme plus ma chambre MDRRR",
     createdAt: "2026-09-14T15:20:00.000Z"
+  },
+  {
+    id: "11",
+    authorName: "Oumaima EL GANA",
+    authorHand: "ouMs.1110",
+    content: "Mais qu'on me sorte de cette salle de classe pitié...Tout me soule et puis le mois de septembre il veut pas finir hein",
+    createdAt: "2026-09-14T15:20:00.000Z",
+    parentId : "2"
+  },
+  {
+    id: "12",
+    authorName: "Salma",
+    authorHand: "SGANS_ELG",
+    content: "J'ai remarqué un truc en étude supp c tellement rare de rencontrer qlq de la mm mentalité encore au lycée mm ville mm quartier ça influence votre pensé mais dans le supp c'est rare",
+    createdAt: "2026-09-14T15:20:00.000Z",
+    parentId: "4"
   }
 ]

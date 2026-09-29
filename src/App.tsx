@@ -31,7 +31,7 @@ function App() : React.JSX.Element {
               <button className="post-btn small">Poster</button>
             </div>
           </div>
-          <TweetsList tweets={tweets}/>
+          <Outlet/>
         </main>
 
         <aside className="right">
