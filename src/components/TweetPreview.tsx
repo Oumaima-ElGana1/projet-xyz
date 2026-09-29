@@ -7,7 +7,7 @@ type TweetPreviewProps = {
     tweet : Tweet,
     linkToDetail?:boolean
 }
-export function TweetPreview({ tweet }: TweetPreviewProps): ReactElement {
+export function TweetPreview({ tweet, linkToDetail = true }: TweetPreviewProps): ReactElement {
   const formattedDate = new Date(tweet.createdAt).toLocaleDateString("fr-FR", {
     day: "numeric",
     month: "long",
