@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import { TweetPreview } from '../components/TweetPreview'
 import { TweetsList } from '../components/TweetList'
 import { TweetsContext } from '../contexts/TweetsContext'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 export function TweetDetailsPage(): ReactElement {
   const { id } = useParams<{ id: string }>()
@@ -10,6 +11,10 @@ export function TweetDetailsPage(): ReactElement {
 
   const currentTweet = tweets.find(t => t.id === id)
   const replies = tweets.filter(t => t.parentId === id)
+  const title = currentTweet
+  ?'Tweet de ${currentTweet.authorName}'
+  : "Tweet introuvable"
+  useDocumentTitle(title)
 
   if (!currentTweet) {
     return (
