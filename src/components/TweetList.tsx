@@ -2,7 +2,8 @@ import type { ReactElement } from "react"
 import { TweetPreview } from "./TweetPreview"
 import type { Tweet } from "../types/Tweet"
 import { Link } from "react-router-dom"
-type TweetsListProps = {
+
+export type TweetsListProps = {
   tweets: Array<Tweet>
 }
 

@@ -1,12 +1,12 @@
 import type { ReactElement } from 'react'
 import { TweetsList } from '../components/TweetList' 
-import { tweets } from '../data/tweets'
+import { initialTweets } from '../data/tweets'
 
 export function TweetsMasterPage(): ReactElement {
   return (
     <section className="tweets-master-page">
-      <TweetsList tweets={tweets} />
+      <TweetsList tweets={initialTweets} />
     </section>
   )
-  const rootTweets = tweets.filter(tweet => !tweet.parentId)
+  const rootTweets = initialTweets.filter(tweet => !tweet.parentId)
 }

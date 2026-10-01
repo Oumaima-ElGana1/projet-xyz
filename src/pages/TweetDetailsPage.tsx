@@ -1,14 +1,14 @@
 import type { ReactElement } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { tweets } from '../data/tweets'
+import { initialTweets } from '../data/tweets'
 import { TweetPreview } from '../components/TweetPreview'
 import { TweetsList } from '../components/TweetList'
 
 export function TweetDetailsPage(): ReactElement {
   const { id } = useParams<{ id: string }>()
 
-  const currentTweet = tweets.find(t => t.id === id)
-  const replies = tweets.filter(t => t.parentId === id)
+  const currentTweet = initialTweets.find(t => t.id === id)
+  const replies = initialTweets.filter(t => t.parentId === id)
 
   if (!currentTweet) {
     return (

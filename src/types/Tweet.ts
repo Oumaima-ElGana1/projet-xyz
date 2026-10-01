@@ -6,6 +6,8 @@ export type Tweet ={
     image?: TweetImage
     createdAt : string //la date doit être au format ISO 8601
     parentId? : string
+    likes : number
+    likedByMe : boolean
 }
 export type TweetImage={
     url : string

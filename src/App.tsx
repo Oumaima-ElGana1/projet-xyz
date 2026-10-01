@@ -1,11 +1,15 @@
 import { useState } from 'react'
 import './App.css'
 import { TweetsList } from './components/TweetList'
-import { tweets } from './data/tweets'
+import { initialTweets } from './data/tweets'
 import { Outlet } from 'react-router-dom'
+import { TweetsContext, type TweetsContextValue } from './contexts/TweetsContext'
+import type { Tweet } from './types/Tweet'
+
 
 function App() : React.JSX.Element {
-  const [count, setCount] = useState(0)
+ const [tweets, setTweets] = useState<Array<Tweet>>(initialTweets);
+ const context : TweetsContextValue = { tweets};
 
   return (
     
@@ -31,7 +35,9 @@ function App() : React.JSX.Element {
               <button className="post-btn small">Poster</button>
             </div>
           </div>
+          <TweetsContext.Provider value={context}>
           <Outlet/>
+          </TweetsContext.Provider>
         </main>
 
         <aside className="right">
