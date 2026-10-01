@@ -1,14 +1,15 @@
-import type { ReactElement } from 'react'
+import { useContext, type ReactElement } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { initialTweets } from '../data/tweets'
 import { TweetPreview } from '../components/TweetPreview'
 import { TweetsList } from '../components/TweetList'
+import { TweetsContext } from '../contexts/TweetsContext'
 
 export function TweetDetailsPage(): ReactElement {
   const { id } = useParams<{ id: string }>()
+  const { tweets, toggleLike } = useContext(TweetsContext)!
 
-  const currentTweet = initialTweets.find(t => t.id === id)
-  const replies = initialTweets.filter(t => t.parentId === id)
+  const currentTweet = tweets.find(t => t.id === id)
+  const replies = tweets.filter(t => t.parentId === id)
 
   if (!currentTweet) {
     return (
@@ -21,11 +22,15 @@ export function TweetDetailsPage(): ReactElement {
 
   return (
     <div className="tweet-details-page">
-      <TweetPreview tweet={currentTweet} linkToDetail={false} />
+      <TweetPreview
+        tweet={currentTweet}
+        linkToDetail={false}
+        onToggleLike={toggleLike}
+      />
 
       <section className="replies-section">
         {replies.length > 0 ? (
-          <TweetsList tweets={replies} />
+          <TweetsList tweets={replies} onToggleLike={toggleLike} />
         ) : (
           <p>Aucune réponse pour le moment.</p>
         )}

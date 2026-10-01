@@ -22,8 +22,26 @@ function App() : React.JSX.Element {
   }
   setTweets((prevTweets)=>[newTweet, ...prevTweets])
  }
- const context : TweetsContextValue = { tweets, addTweet};
+ 
+ const toggleLike = (id: string): void => {
+    setTweets((prevTweets) =>
+      prevTweets.map((tweet) => {
+        if (tweet.id !== id) {
+          return tweet
+        }
 
+        const nextLikedByMe = !tweet.likedByMe
+        const nextLikes = nextLikedByMe ? tweet.likes + 1 : tweet.likes - 1
+
+        return {
+          ...tweet,
+          likedByMe: nextLikedByMe,
+          likes: nextLikes,
+        }
+      })
+    )
+  }
+  const context: TweetsContextValue={tweets, addTweet, toggleLike}
   return (
     
       <div className="layout">
