@@ -5,11 +5,24 @@ import { initialTweets } from './data/tweets'
 import { Outlet } from 'react-router-dom'
 import { TweetsContext, type TweetsContextValue } from './contexts/TweetsContext'
 import type { Tweet } from './types/Tweet'
+import { TweetForm } from './components/TweetForm'
 
 
 function App() : React.JSX.Element {
  const [tweets, setTweets] = useState<Array<Tweet>>(initialTweets);
- const context : TweetsContextValue = { tweets};
+ const addTweet = (content : string): void =>{
+  const newTweet: Tweet = {
+    id: crypto.randomUUID(),
+    authorName: "Vous",
+    authorHand: "vous",
+    content,
+    createdAt : new Date().toISOString(),
+    likes : 0,
+    likedByMe : false,
+  }
+  setTweets((prevTweets)=>[newTweet, ...prevTweets])
+ }
+ const context : TweetsContextValue = { tweets, addTweet};
 
   return (
     
@@ -27,14 +40,6 @@ function App() : React.JSX.Element {
         </aside>
         <main className="feed">
           <header className="feed-header">Accueil</header>
-          <div className="compose">
-            <div className="avatar"/>
-            <div className="compose-body"/>
-            <textarea placeholder="Quoi de neuf?" rows={2}/>
-            <div className="compose-actions">
-              <button className="post-btn small">Poster</button>
-            </div>
-          </div>
           <TweetsContext.Provider value={context}>
           <Outlet/>
           </TweetsContext.Provider>
